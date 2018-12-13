@@ -1,6 +1,7 @@
 from math import log
 import math
 
+
 def clacShannonEnt(data):
     """
     计算信息熵/calculate information entropy
@@ -63,7 +64,9 @@ def split_data(data, axis, value):
 
 def choose_bast_feature_to_split(data):
     """
-    找到理想特征。思想是，针对每一特征计算他们的特征信息熵，取信息熵最大者作为最优特征
+    找到理想特征。思想是，针对每一特征计算他们的特征信息熵，
+    取信息熵最大者作为最优特征
+    ?????问题，信息熵越大代表什么，越小代表什么？？？？？？
     :param data:
     :return:
     """
@@ -82,7 +85,6 @@ def choose_bast_feature_to_split(data):
             prob = len(sub_data)/float(len(data))
             new_entropy += prob*clacShannonEnt(sub_data)  # TODO
         info_gain = base_entropy - new_entropy
-        # print("&&&&&", info_gain)
         # 如果此信息的信息熵比之前的高，则代替之前的-----
         if info_gain > beast_info_gain:
             beast_info_gain = info_gain
@@ -95,3 +97,48 @@ feature = choose_bast_feature_to_split(data)
 print(feature)
 
 
+import operator
+
+
+def majority_cnt(class_list):
+    # TODO ???
+    class_count = {}
+    for vote in class_list:
+        if vote not in class_count:
+            class_count[vote] = 0
+        class_count[vote] += 1
+    sorted_class_count = \
+        sorted(class_count.items(), key=operator.itemgetter(1), reverse=True)
+    return sorted_class_count[0][0]
+
+
+def create_tree(data, labels):
+    """
+    构造决策树。
+    :param data:
+    :param labels:
+    :return:
+    """
+    class_list = [example[-1] for example in data]
+    if class_list.count(class_list[0]) == len(class_list):
+        return class_list[0]
+    if len(data[0]) == 1:
+        return majority_cnt(class_list)
+    beast_feat = choose_bast_feature_to_split(data)
+    baset_feat_label = labels[beast_feat]
+    my_tree = {baset_feat_label: {}}
+    del(labels[beast_feat])
+    feat_values = [example[beast_feat] for example in data]
+    unique_values = set(feat_values)
+    for value in unique_values:
+        sub_labels = labels[:]
+        my_tree[baset_feat_label][value] = \
+            create_tree(split_data(data, beast_feat, value), sub_labels)
+    return my_tree
+
+
+data, labels = create_data()
+
+my_tree = create_tree(data, labels)
+
+print(my_tree)
