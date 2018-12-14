@@ -26,4 +26,30 @@ def create_plot():
     plt.show()
 
 
-create_plot()
+# create_plot()
+
+
+def get_numleafs(my_tree):
+    leaf_nums= 0
+    first_str = my_tree.keys()[0]
+    second_dic = my_tree[first_str]
+    for key in second_dic:
+        if type(second_dic[key]).__name__ == "dict":
+            leaf_nums += get_numleafs(second_dic[key])
+        else:
+            leaf_nums += 1
+    return leaf_nums
+
+
+def get_tree_depth(my_tree):
+    max_depth = 0
+    first_str = my_tree.keys()[0]
+    second_dic = my_tree[first_str]
+    for key in second_dic:
+        if type(second_dic[key]).__name__ == "dict":
+            this_depth = 1 + get_numleafs(second_dic[key])
+        else:
+            this_depth = 1
+        if this_depth > max_depth:
+            max_depth = this_depth
+    return max_depth
