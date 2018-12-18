@@ -31,7 +31,7 @@ def create_plot():
 
 def get_numleafs(my_tree):
     leaf_nums= 0
-    first_str = my_tree.keys()[0]
+    first_str = list(my_tree.keys())[0]
     second_dic = my_tree[first_str]
     for key in second_dic:
         if type(second_dic[key]).__name__ == "dict":
@@ -43,7 +43,7 @@ def get_numleafs(my_tree):
 
 def get_tree_depth(my_tree):
     max_depth = 0
-    first_str = my_tree.keys()[0]
+    first_str = list(my_tree.keys())[0]
     second_dic = my_tree[first_str]
     for key in second_dic:
         if type(second_dic[key]).__name__ == "dict":
@@ -53,3 +53,20 @@ def get_tree_depth(my_tree):
         if this_depth > max_depth:
             max_depth = this_depth
     return max_depth
+
+
+def retrieve_tree(i):
+    list_of_tree = [{"no sufacing": {0: "no", 1: {"flippers": {0: "no", 1: "yes"}}}},
+                    {"no sufacing": {0: "no", 1: {"flippers": {0: {"head": {0: "no", 1: "yes"}}, 1: "no"}}}}]
+    return list_of_tree[i]
+
+
+my_tree = retrieve_tree(0)
+print(my_tree)
+leafs = get_numleafs(my_tree)
+
+print(leafs)
+
+depth = get_tree_depth(my_tree)
+
+print(depth)
