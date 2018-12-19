@@ -116,7 +116,7 @@ def create_tree(data, labels):
     """
     构造决策树。
     :param data:
-    :param labels:
+    :param labels: 数据的特征标签
     :return:
     """
     class_list = [example[-1] for example in data]
@@ -137,8 +137,48 @@ def create_tree(data, labels):
     return my_tree
 
 
-data, labels = create_data()
+# data, labels = create_data()
+#
+# my_tree = create_tree(data, labels)
+#
+# print(my_tree)
 
-my_tree = create_tree(data, labels)
 
-print(my_tree)
+def store_tree(tree, filename):
+    import pickle
+    fw = open(filename, "wb")
+    pickle.dump(tree, fw)
+    fw.close()
+
+
+def load_tree(filename):
+    import pickle
+    fr = open(filename, "rb")
+    return pickle.load(fr)
+
+# store_tree(my_tree, "tttt.pickle")
+
+# b = load_tree("tttt.pickle")
+# print(b)
+
+# 用决策树分类
+# tree的格式：
+# {'no sufacing': {0: 'no', 1: {'flippers': {0: 'no', 1: 'yes'}}, 3: 'maybe'}}
+def classify(input_tree, feat_labels, test_vec):
+    """
+
+    :param input_tree:
+    :param feat_labels: 就是特征标签
+    :param test_vec:
+    :return:
+    """
+    first_str = list(input_tree.keys())[0]
+    second_dict = input_tree[first_str]
+    feat_index = feat_labels.index(first_str)
+    for key in list(second_dict.keys()):
+        if test_vec[feat_index] == key:
+            if type(second_dict[key]).__name__ == "dict":
+                class_label = classify(second_dict[key], feat_labels, test_vec)
+            else:
+                class_label = second_dict[key]
+    return class_label
