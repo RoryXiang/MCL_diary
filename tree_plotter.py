@@ -16,17 +16,14 @@ def plot_node(node_txt, center_pt, parent_pt, node_type):
                              va="center", ha="center", bbox=node_type,
                              arrowprops=arrow_args)
 
-
-def create_plot():
-    fig = plt.figure(1, facecolor="white")
-    fig.clf()
-    create_plot.axl = plt.subplot(111, frameon=False)
-    plot_node("决策节点", (0.5, 0.1), (0.1, 0.5), decision_node)
-    plot_node("叶节点", (0.8, 0.1), (0.3, 0.8), leaf_node)
-    plt.show()
-
-
-# create_plot()
+#
+# def create_plot():
+#     fig = plt.figure(1, facecolor="white")
+#     fig.clf()
+#     create_plot.axl = plt.subplot(111, frameon=False)
+#     plot_node("决策节点", (0.5, 0.1), (0.1, 0.5), decision_node)
+#     plot_node("叶节点", (0.8, 0.1), (0.3, 0.8), leaf_node)
+#     plt.show()
 
 
 def get_numleafs(my_tree):
@@ -61,12 +58,60 @@ def retrieve_tree(i):
     return list_of_tree[i]
 
 
+# my_tree = retrieve_tree(0)
+# print(my_tree)
+# leafs = get_numleafs(my_tree)
+#
+# print(leafs)
+#
+# depth = get_tree_depth(my_tree)
+#
+# print(depth)
+
+# # 这个是用来绘制线上的标注，简单
+def plot_mid_text(cntrpt, parentpt, txtsting):
+    x_mid = (parentpt[0] - cntrpt[0]) / 2.0 + cntrpt[0]
+    y_mid = (parentpt[1] - cntrpt[1]) / 2.0 + cntrpt[1]
+    create_plot.axl.text(x_mid, y_mid, txtsting)
+
+
+# # 重点，递归，决定整个树图的绘制，难（自己认为）
+def plot_tree(my_tree, parentpt, node_txt):
+    leaf_nums = get_numleafs(my_tree)
+    depth = get_tree_depth(my_tree)
+    first_str = list(my_tree.keys())[0]
+    cntrpt = (plot_tree.x0ff + (1.0 + float(leaf_nums)) / 2.0 / plot_tree.totalw,
+              plot_tree.y0ff)
+    plot_mid_text(cntrpt, parentpt, node_txt)
+    plot_node(first_str, cntrpt, parentpt, decision_node)
+
+    second_dict = my_tree[first_str]
+    print(second_dict)
+    plot_tree.y0ff = plot_tree.y0ff - 1.0/plot_tree.totald
+    for key in list(second_dict.keys()):
+        if type(second_dict[key]).__name__ == "dict":   # test to see if the nodes are dictonaires, if not they are leaf nodes
+            plot_tree(second_dict[key], cntrpt, str(key))
+        else:  # it's a leaf node print the leaf node
+            plot_tree.x0ff = plot_tree.x0ff + 1.0/plot_tree.totalw
+            plot_node(second_dict[key], (plot_tree.x0ff, plot_tree.y0ff), cntrpt, leaf_node)
+            plot_mid_text((plot_tree.x0ff, plot_tree.y0ff), cntrpt, str(key))
+    plot_tree.y0ff = plot_tree.y0ff + 1.0 / plot_tree.totald
+
+
+def create_plot(intree):
+    fig = plt.figure(1, facecolor="white")
+    fig.clf()
+    axprops = dict(xticks=[], yticks=[])
+    create_plot.axl = plt.subplot(111, frameon=False, **axprops)
+    plot_tree.totalw = float(get_numleafs(intree))
+    plot_tree.totald = float(get_tree_depth(intree))
+    plot_tree.x0ff = -0.5/plot_tree.totalw
+    plot_tree.y0ff = 1.0
+    plot_tree(intree, (0.5, 1.0), "")
+    plt.show()
+
+
 my_tree = retrieve_tree(0)
+my_tree["no sufacing"][3] = "maybe"
 print(my_tree)
-leafs = get_numleafs(my_tree)
-
-print(leafs)
-
-depth = get_tree_depth(my_tree)
-
-print(depth)
+create_plot(my_tree)
