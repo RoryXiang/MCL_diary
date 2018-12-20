@@ -182,3 +182,12 @@ def classify(input_tree, feat_labels, test_vec):
             else:
                 class_label = second_dict[key]
     return class_label
+
+
+fr = open("./lenses.txt", "r")
+lenses = [x.strip().split("\t") for x in fr.readlines()]
+labels = ["age", "prescript", "astigmatic", "tearRate"]
+trees = create_tree(lenses, labels)
+print(trees)
+from decision_tree.tree_plotter import create_plot
+create_plot(trees)
