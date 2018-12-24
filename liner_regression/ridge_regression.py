@@ -23,7 +23,7 @@ def ridge_test(xarr,yarr):
     w_mat = np.zeros((numTestPts, np.shape(x_mat)[1]))
     for i in range(numTestPts):
         ws = np.ridgeRegres(x_mat, y_mat, np.exp(i-10))
-        w_mat[i,:] = ws.T
+        w_mat[i] = ws.T
     return w_mat
 
 

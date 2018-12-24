@@ -35,26 +35,30 @@ def stand_regres(xarr, yarr):
     return ws
 
 
-xarr, yarr = load_data("ex0.txt")
-# print(xarr[0:2])
+if __name__ == '__main__':
 
-ws = stand_regres(xarr, yarr)
-# print(ws)
+    xarr, yarr = load_data("ex0.txt")
+    print("????", yarr)
+    # print(xarr[0:2])
 
-x_mat = np.mat(xarr)
-y_mat = np.mat(yarr)
-y_hat = x_mat*ws
+    ws = stand_regres(xarr, yarr)
+    # print(ws)
+
+    x_mat = np.mat(xarr)
+    y_mat = np.mat(yarr)
+    y_hat = x_mat*ws
 
 # 把数据和预测直线画出来-------------------------------------------------------
-#
-fig = plt.figure()
-ax = fig.add_subplot(111)
-ax.scatter(x_mat[:,1].flatten().A[0], y_mat.T[:, 0].flatten().A[0])  # numpy 的操作
-x_copy = x_mat.copy()
-x_copy.sort(0)
-y_hat = x_copy*ws
-ax.plot(x_copy[:,1], y_hat)
-plt.show()
+if __name__ == '__main__':
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    ax.scatter(x_mat[:,1].flatten().A[0], y_mat.T[:, 0].flatten().A[0])  # numpy 的操作
+    x_copy = x_mat.copy()
+    x_copy.sort(0)
+    y_hat = x_copy*ws
+    ax.plot(x_copy[:,1], y_hat)
+    plt.show()
 
 # -----------------------------------------------------------------------------
 
@@ -69,14 +73,13 @@ def lwlr(test_point, xarr, yarr, k=1.0):
     for j in range(m):
         diff_mat = test_point - x_mat[j]
         weigths[j, j] = np.exp(diff_mat*diff_mat.T/(-2.0*k**2))  # 权重值大小以指级衰减
+        # weigths[j, j] = diff_mat*diff_mat.T/(-2.0*k**2)
     xTx = x_mat.T * (weigths*x_mat)
     if np.linalg.det(xTx) == 0:
         print("This is singular, cant not do inverse")
         return
     ws = xTx.I * x_mat.T * weigths * y_mat  # TODO ????
     return test_point * ws
-
-print(yarr[0])
 
 
 def lwlr_test(testarr, xarr, yarr, k=1.0):
@@ -88,15 +91,17 @@ def lwlr_test(testarr, xarr, yarr, k=1.0):
 
 
 #
-y_hat = lwlr_test(xarr, xarr, yarr, 0.01)
-x_mat = np.mat(xarr)
-srt_ind = x_mat[:, 1].argsort(0)
-x_sort = x_mat[srt_ind][:, 0, :]
-fig = plt.figure()
-ax = fig.add_subplot(111)
-ax.plot(x_sort[:, 1], y_hat[srt_ind])
-ax.scatter(x_mat[:, 1].flatten().A[0], np.mat(yarr).T.flatten().A[0], s=2, c="red")
-plt.show()
+if __name__ == '__main__':
 
-print(np.mat(np.array([1,2,3]))*np.mat(np.array([1,2,3])).T)
-print(np.sum(np.mat(np.array([1,2,3]))*np.mat(np.array([1,2,3])).T))
+    y_hat = lwlr_test(xarr, xarr, yarr, 0.01)
+    x_mat = np.mat(xarr)
+    srt_ind = x_mat[:, 1].argsort(0)
+    x_sort = x_mat[srt_ind][:, 0, :]
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    ax.plot(x_sort[:, 1], y_hat[srt_ind])
+    ax.scatter(x_mat[:, 1].flatten().A[0], np.mat(yarr).T.flatten().A[0], s=2, c="red")
+    plt.show()
+
+    print(np.mat(np.array([1,2,3]))*np.mat(np.array([1,2,3])).T)
+    print(np.sum(np.mat(np.array([1,2,3]))*np.mat(np.array([1,2,3])).T))
