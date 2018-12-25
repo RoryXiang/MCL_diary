@@ -65,7 +65,7 @@ if __name__ == '__main__':
 
 # 局部加权线性回归  k值
 # 增加了核函数，使用高斯核函数，相当于只用于当前数据点相近的部分数据计算回归系数
-def lwlr(test_point, xarr, yarr, k=1.0):
+def lwlr(test_point, xarr, yarr, k=10000.0):
     x_mat = np.mat(xarr)
     y_mat = np.mat(yarr).T
     m = np.shape(x_mat)[0]
@@ -73,7 +73,6 @@ def lwlr(test_point, xarr, yarr, k=1.0):
     for j in range(m):
         diff_mat = test_point - x_mat[j]
         weigths[j, j] = np.exp(diff_mat*diff_mat.T/(-2.0*k**2))  # 权重值大小以指级衰减
-        # weigths[j, j] = diff_mat*diff_mat.T/(-2.0*k**2)
     xTx = x_mat.T * (weigths*x_mat)
     if np.linalg.det(xTx) == 0:
         print("This is singular, cant not do inverse")

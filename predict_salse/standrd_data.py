@@ -10,7 +10,11 @@ from liner_regression.regression import stand_regres, lwlr
 
 data_ = pd.read_excel("../predict_salse/salse_data.xlsx")
 data = data_[["vacationd_time", "salse_time", "old", "salse"]]
-print(np.array(data))
+
+
+# everyday---------------------------------------------------------
+data_e = pd.read_excel("everyday_salse_data.xlsx")
+data_e = data_e[["time", "old", "salse"]]
 
 
 def get_origin_x_y_arr():
@@ -25,8 +29,31 @@ def get_origin_x_y_arr():
     return xarr, yarr
 
 
+def get_everyday_origin_x_y_arr():
+    xarr_ = data_e[["time", "old"]]
+    yarr_ = data_e["salse"]
+    yarr = yarr_.tolist()
+    xarr = np.array(xarr_)
+    yarr = np.mat(yarr, dtype="float64")
+    xarr = np.mat(xarr, dtype="float64")
+    return xarr, yarr
+
+
 def get_stanred_x_y_arr():
     data_all = np.array(data)  # 将DataFrame数据转换成array
+    standred = StandardScaler()
+    standred_data = standred.fit_transform(data_all)
+    stand_x = []
+    stand_y = []
+    for one in standred_data:
+        stand_x.append(one[:-1])
+        stand_y.append(one[-1])
+
+    return stand_x, stand_y
+
+
+def get_everyday_stanred_x_y_arr():
+    data_all = np.array(data_e)  # 将DataFrame数据转换成array
     standred = StandardScaler()
     standred_data = standred.fit_transform(data_all)
     stand_x = []

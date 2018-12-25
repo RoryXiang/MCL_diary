@@ -1,9 +1,10 @@
 import numpy as np
 from liner_regression.regression import load_data, stand_regres
 import matplotlib.pyplot as plt
+import random
 
 
-# 岭回归----------------------------------------------------
+# 岭回归-----------------------------------------------------------------------
 def rigre_regression(x_mat, y_mat, lam=0.2):
     xTx = x_mat.T*x_mat
     denom = xTx + np.eye(np.shape(x_mat)[1]) * lam
@@ -11,6 +12,7 @@ def rigre_regression(x_mat, y_mat, lam=0.2):
         print("This is singular, cant not do inverse")
         return
     ws = denom.I * x_mat.T * y_mat
+    # ws = xTx.I * x_mat.T * y_mat
     return ws
 
 
@@ -90,6 +92,8 @@ def stage_wise(xarr, yarr, eps=0.01, num_it=100):
                 if rss_e < lowest_error:
                     ws_max = ws_test
         ws = ws_max.copy()
+        return_mat[i, :] = ws.T
+    # return ws
     return return_mat
 
 
@@ -107,3 +111,41 @@ def show__():
 
 if __name__ == '__main__':
     show__()
+
+
+# 交叉验证岭回归-----------------------------------------------------------
+def cross_vlidation(xarr, yarr, val_num=10):
+    m = len(yarr)
+    index_ = range(m)
+    error_mat = np.zeros((val_num, 30))
+    for i in range(val_num):
+        train_x = train_y = test_x = test_y =[]
+        random.shuffle(index_)
+        for j in range(m):
+            if j < m * 0.9:
+                train_x.append(xarr[index_[j]])
+                train_y.append(yarr[index_[j]])
+            else:
+                test_x.append(xarr[index_[j]])
+                test_y.append(yarr[index_[j]])
+        w_mat = ridge_test(train_x, train_y)
+        for k in range(30):
+            mat_test_x = np.mat(test_x)
+            mat_train_x = np.mat(train_x)
+            mean_train = np.mean(mat_train_x, 0)
+            var_train = np.var(mat_train_x, 0)
+            mat_test_x = (mat_test_x-mean_train) / var_train
+            y_est = mat_test_x * np.mat(w_mat[k]).T + np.mean(train_y)
+            error_mat[i, k] = rss_error(y_est.T.A, np.array(test_y))
+    mean_errors = np.mean(error_mat, 0)
+    min_mean = float(np.min(mean_errors))
+    beast_weights = w_mat[np.nonzero((mean_errors==min_mean))]
+    x_mat = np.mat(xarr)
+    y_mat = np.mat(yarr).T
+    mean_x = np.mean(x_mat, 0)
+    var_x = np.var(x_mat, 0)
+    un_reg = beast_weights / var_x
+
+
+
+    pass

@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ad60692-cb3e-4f29-a576-e3caac980844" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/liner_regression/spider_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/liner_regression/ridge_regression.py" beforeDir="false" afterPath="$PROJECT_DIR$/liner_regression/ridge_regression.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/predict_salse/predict.py" beforeDir="false" afterPath="$PROJECT_DIR$/predict_salse/predict.py" afterDir="false" />
     </list>
@@ -14,15 +16,17 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/MCL_dairy$standrd_data.coverage" NAME="standrd_data Coverage Results" MODIFIED="1545453527986" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pridict_salse" />
-    <SUITE FILE_PATH="coverage/MCL_dairy$predict.coverage" NAME="predict Coverage Results" MODIFIED="1545618901955" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/predict_salse" />
+    <SUITE FILE_PATH="coverage/MCL_dairy$predict.coverage" NAME="predict Coverage Results" MODIFIED="1545703299484" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/predict_salse" />
     <SUITE FILE_PATH="coverage/MCL_dairy$extract.coverage" NAME="extract Coverage Results" MODIFIED="1545189723208" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MCL_dairy$standrd_data__1_.coverage" NAME="standrd_data (1) Coverage Results" MODIFIED="1545526940743" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/predict_salse" />
-    <SUITE FILE_PATH="coverage/MCL_dairy$ridge_regression.coverage" NAME="ridge_regression Coverage Results" MODIFIED="1545618243090" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/liner_regression" />
+    <SUITE FILE_PATH="coverage/MCL_dairy$1111.coverage" NAME="1111 Coverage Results" MODIFIED="1545703124465" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/predict_salse" />
     <SUITE FILE_PATH="coverage/MCL_dairy$tree_plotter.coverage" NAME="tree_plotter Coverage Results" MODIFIED="1545208918485" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MCL_dairy$learn_decision_tree__1_.coverage" NAME="learn_decision_tree (1) Coverage Results" MODIFIED="1545285864034" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/decision_tree" />
     <SUITE FILE_PATH="coverage/MCL_dairy$11.coverage" NAME="11 Coverage Results" MODIFIED="1545204351455" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MCL_dairy$test.coverage" NAME="test Coverage Results" MODIFIED="1545288585589" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MCL_dairy$regression.coverage" NAME="regression Coverage Results" MODIFIED="1545478590813" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/liner_regression" />
+    <SUITE FILE_PATH="coverage/MCL_dairy$ridge_regression.coverage" NAME="ridge_regression Coverage Results" MODIFIED="1545622939611" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/liner_regression" />
+    <SUITE FILE_PATH="coverage/MCL_dairy$spider_data.coverage" NAME="spider_data Coverage Results" MODIFIED="1545622419392" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/liner_regression" />
     <SUITE FILE_PATH="coverage/MCL_dairy$learn_decision_tree.coverage" NAME="learn_decision_tree Coverage Results" MODIFIED="1545122580390" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
@@ -48,8 +52,8 @@
       <file leaf-file-name="standrd_data.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/predict_salse/standrd_data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="640">
-              <caret line="55" column="4" selection-start-line="55" selection-start-column="4" selection-end-line="55" selection-end-column="24" />
+            <state relative-caret-position="-375">
+              <caret line="11" column="62" selection-start-line="11" selection-start-column="62" selection-end-line="11" selection-end-column="62" />
               <folding>
                 <element signature="e#90#109#0" expanded="true" />
               </folding>
@@ -57,11 +61,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="predict.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="predict.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/predict_salse/predict.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="243">
+              <caret line="52" column="48" selection-start-line="52" selection-start-column="48" selection-end-line="52" selection-end-column="48" />
               <folding>
                 <element signature="e#90#109#0" expanded="true" />
               </folding>
@@ -72,8 +76,8 @@
       <file leaf-file-name="regression.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/liner_regression/regression.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1296">
-              <caret line="82" selection-start-line="82" selection-end-line="82" />
+            <state relative-caret-position="-80">
+              <caret line="73" column="40" selection-start-line="73" selection-start-column="40" selection-end-line="73" selection-end-column="40" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -81,13 +85,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ridge_regression.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ridge_regression.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/liner_regression/ridge_regression.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-208">
-              <caret line="62" selection-start-line="59" selection-start-column="26" selection-end-line="60" selection-end-column="10" />
+            <state relative-caret-position="400">
+              <caret line="94" column="31" selection-start-line="94" selection-start-column="31" selection-end-line="94" selection-end-column="31" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="spider_data.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/liner_regression/spider_data.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -127,10 +143,12 @@
         <option value="$PROJECT_DIR$/decision_tree/learn_decision_tree.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/pridict_salse/standrd_data.py" />
-        <option value="$PROJECT_DIR$/liner_regression/regression.py" />
-        <option value="$PROJECT_DIR$/predict_salse/standrd_data.py" />
-        <option value="$PROJECT_DIR$/predict_salse/predict.py" />
+        <option value="$PROJECT_DIR$/liner_regression/spider_data.py" />
         <option value="$PROJECT_DIR$/liner_regression/ridge_regression.py" />
+        <option value="$PROJECT_DIR$/predict_salse/standrd_data.py" />
+        <option value="$PROJECT_DIR$/predict_salse/1111.py" />
+        <option value="$PROJECT_DIR$/predict_salse/predict.py" />
+        <option value="$PROJECT_DIR$/liner_regression/regression.py" />
       </list>
     </option>
   </component>
@@ -144,8 +162,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="240" />
-    <option name="y" value="23" />
+    <option name="x" value="220" />
+    <option name="y" value="88" />
     <option name="width" value="1440" />
     <option name="height" value="972" />
   </component>
@@ -165,6 +183,17 @@
               <item name="MCL_dairy" type="b2602c69:ProjectViewProjectNode" />
               <item name="MCL_dairy" type="462c0819:PsiDirectoryNode" />
               <item name="liner_regression" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MCL_dairy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MCL_dairy" type="462c0819:PsiDirectoryNode" />
+              <item name="liner_regression" type="462c0819:PsiDirectoryNode" />
+              <item name="setHtml" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MCL_dairy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MCL_dairy" type="462c0819:PsiDirectoryNode" />
+              <item name="predict_salse" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -203,7 +232,26 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.predict">
+  <component name="RunManager" selected="Python.1111">
+    <configuration name="1111" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="MCL_dairy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/predict_salse" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/predict_salse/1111.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="predict" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="MCL_dairy" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -218,25 +266,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/predict_salse/predict.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="regression" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="MCL_dairy" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/liner_regression" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/liner_regression/regression.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -261,6 +290,25 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="spider_data" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="MCL_dairy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/liner_regression" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/liner_regression/spider_data.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="standrd_data (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="MCL_dairy" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -280,39 +328,20 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="standrd_data" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="MCL_dairy" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pridict_salse" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pridict_salse/standrd_data.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
     <list>
-      <item itemvalue="Python.regression" />
-      <item itemvalue="Python.standrd_data" />
       <item itemvalue="Python.standrd_data (1)" />
       <item itemvalue="Python.predict" />
       <item itemvalue="Python.ridge_regression" />
+      <item itemvalue="Python.spider_data" />
+      <item itemvalue="Python.1111" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.predict" />
+        <item itemvalue="Python.1111" />
         <item itemvalue="Python.ridge_regression" />
+        <item itemvalue="Python.spider_data" />
         <item itemvalue="Python.standrd_data (1)" />
-        <item itemvalue="Python.regression" />
-        <item itemvalue="Python.standrd_data" />
       </list>
     </recent_temporary>
   </component>
@@ -339,7 +368,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="240" y="23" width="1440" height="972" extended-state="0" />
+    <frame x="220" y="88" width="1440" height="972" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3297414" />
@@ -347,12 +376,12 @@
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Python Console" order="11" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.19184652" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.34172663" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32853717" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12826087" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="right" id="SciView" order="4" weight="0.3036232" />
+      <window_info anchor="right" id="SciView" order="4" visible="true" weight="0.3036232" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
@@ -372,13 +401,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/decision_tree/tree_plotter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1712">
-          <caret line="107" column="20" selection-start-line="107" selection-start-column="20" selection-end-line="107" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
@@ -552,9 +574,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/liner_regression/setHtml/lego8288.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$USER_HOME$/spider/Lib/site-packages/numpy/matrixlib/defmatrix.py" />
     <entry file="file://$PROJECT_DIR$/liner_regression/ex1.txt">
       <provider selected="true" editor-type-id="text-editor" />
@@ -588,10 +607,23 @@
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/.virtualenvs/ai_data/lib/python3.6/site-packages/numpy/matrixlib/defmatrix.py" />
-    <entry file="file://$PROJECT_DIR$/liner_regression/regression.py">
+    <entry file="file://$PROJECT_DIR$/liner_regression/setHtml/lego8288.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liner_regression/spider_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1296">
-          <caret line="82" selection-start-line="82" selection-end-line="82" />
+        <state relative-caret-position="144">
+          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liner_regression/ridge_regression.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="94" column="31" selection-start-line="94" selection-start-column="31" selection-end-line="94" selection-end-column="31" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -600,30 +632,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/predict_salse/standrd_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="640">
-          <caret line="55" column="4" selection-start-line="55" selection-start-column="4" selection-end-line="55" selection-end-column="24" />
+        <state relative-caret-position="-375">
+          <caret line="11" column="62" selection-start-line="11" selection-start-column="62" selection-end-line="11" selection-end-column="62" />
           <folding>
             <element signature="e#90#109#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liner_regression/regression.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-80">
+          <caret line="73" column="40" selection-start-line="73" selection-start-column="40" selection-end-line="73" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/predict_salse/1111.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/predict_salse/predict.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        <state relative-caret-position="243">
+          <caret line="52" column="48" selection-start-line="52" selection-start-column="48" selection-end-line="52" selection-end-column="48" />
           <folding>
             <element signature="e#90#109#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liner_regression/ridge_regression.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-208">
-          <caret line="62" selection-start-line="59" selection-start-column="26" selection-end-line="60" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
