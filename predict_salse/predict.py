@@ -59,5 +59,19 @@ if __name__ == '__main__':
     print("# lwlr------------------------------------")
     print(lwlr_salse)
 
+    # rigre------------------------------------------------
+    rigre_ws = rigre_regression(stand_x, stnd_y)
+    rigre_salse = np.sum(rigre_ws*xtest)
+    rigre_ws_ = rigre_regression(xarr, yarr)
+    rigre_salse_ = np.sum(rigre_ws_ * xtest)
+    print("# rigre------------------------------------")
+    print(rigre_salse_, rigre_salse)
+
+    # stage_wise---------------------------------------------
+    stage_ws = stage_wise(stand_x, stnd_y)
+    stage_ssalse = np.sum(stage_ws*xtest)
+    print("# stage_wise------------------------------------")
+    print(stage_ssalse)
+
 
 

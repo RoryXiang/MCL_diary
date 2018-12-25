@@ -5,7 +5,9 @@ import random
 
 
 # 岭回归-----------------------------------------------------------------------
-def rigre_regression(x_mat, y_mat, lam=0.2):
+def rigre_regression(xarr, yarr, lam=4.2):
+    x_mat = np.mat(xarr)
+    y_mat = np.mat(yarr).T
     xTx = x_mat.T*x_mat
     denom = xTx + np.eye(np.shape(x_mat)[1]) * lam
     if np.linalg.det(denom) == 0:
@@ -69,7 +71,7 @@ def rss_error(yarr, yhat):
 
 
 # 前向逐步回归--------------------------------------------------------------
-def stage_wise(xarr, yarr, eps=0.01, num_it=100):
+def stage_wise(xarr, yarr, eps=0.01, num_it=1000):
     x_mat = np.mat(xarr)
     y_mat = np.mat(yarr).T
     y_mean = np.mean(y_mat, 0)
@@ -87,14 +89,14 @@ def stage_wise(xarr, yarr, eps=0.01, num_it=100):
             for sign in [-1, 1]:
                 ws_test = ws.copy()
                 ws_test[j] += eps*sign
-                y_test = x_mat *ws_test
+                y_test = x_mat * ws_test
                 rss_e = rss_error(y_mat.A, y_test.A)
                 if rss_e < lowest_error:
                     ws_max = ws_test
         ws = ws_max.copy()
-        return_mat[i, :] = ws.T
-    # return ws
-    return return_mat
+        return_mat[i] = ws.T
+    return ws
+    # return return_mat
 
 
 def show__():
