@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2ad60692-cb3e-4f29-a576-e3caac980844" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/bayes/bayes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="2ad60692-cb3e-4f29-a576-e3caac980844" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,7 +31,7 @@
       <file leaf-file-name="tree_plotter.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/decision_tree/tree_plotter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
+            <state relative-caret-position="1712">
               <caret line="107" column="20" selection-start-line="107" selection-start-column="20" selection-end-line="107" selection-end-column="20" />
             </state>
           </provider>
@@ -52,7 +49,7 @@
       <file leaf-file-name="standrd_data.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/predict_salse/standrd_data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
+            <state relative-caret-position="128">
               <caret line="11" column="62" selection-start-line="11" selection-start-column="62" selection-end-line="11" selection-end-column="62" />
               <folding>
                 <element signature="e#90#109#0" expanded="true" />
@@ -64,7 +61,7 @@
       <file leaf-file-name="predict.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/predict_salse/predict.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1120">
+            <state relative-caret-position="1008">
               <caret line="70" column="42" selection-start-line="70" selection-start-column="42" selection-end-line="70" selection-end-column="42" />
               <folding>
                 <element signature="e#90#109#0" expanded="true" />
@@ -76,7 +73,7 @@
       <file leaf-file-name="regression.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/liner_regression/regression.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1088">
+            <state relative-caret-position="1072">
               <caret line="68" column="4" selection-start-line="68" selection-start-column="4" selection-end-line="69" selection-end-column="26" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -88,7 +85,7 @@
       <file leaf-file-name="ridge_regression.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/liner_regression/ridge_regression.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
+            <state relative-caret-position="2320">
               <caret line="148" column="26" selection-start-line="148" selection-start-column="13" selection-end-line="148" selection-end-column="26" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -100,14 +97,10 @@
       <file leaf-file-name="bayes.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bayes/bayes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
+            <state relative-caret-position="654">
               <caret line="142" column="64" selection-start-line="142" selection-start-column="64" selection-end-line="142" selection-end-column="64" />
               <folding>
                 <element signature="e#1178#1206#0" />
-                <element signature="e#1431#2000#0" />
-                <element signature="e#2493#2521#0" />
-                <element signature="e#2852#3035#0" />
-                <element signature="e#2883#3612#0" />
               </folding>
             </state>
           </provider>
@@ -171,7 +164,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-14" />
     <option name="y" value="56" />
     <option name="width" value="1440" />
@@ -204,7 +197,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../machinelearninginaction/Ch04" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../leetcode_houer" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -368,22 +361,23 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-14" y="56" width="1440" height="985" extended-state="1" />
+    <frame x="-14" y="56" width="1440" height="985" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3297414" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3175915" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Python Console" order="11" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3175915" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.3270366" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1557971" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15797101" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="4" weight="0.3036232" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -568,7 +562,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/decision_tree/tree_plotter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
+        <state relative-caret-position="1712">
           <caret line="107" column="20" selection-start-line="107" selection-start-column="20" selection-end-line="107" selection-end-column="20" />
         </state>
       </provider>
@@ -579,7 +573,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/predict_salse/standrd_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
+        <state relative-caret-position="128">
           <caret line="11" column="62" selection-start-line="11" selection-start-column="62" selection-end-line="11" selection-end-column="62" />
           <folding>
             <element signature="e#90#109#0" expanded="true" />
@@ -590,7 +584,7 @@
     <entry file="file://$PROJECT_DIR$/predict_salse/1111.py" />
     <entry file="file://$PROJECT_DIR$/liner_regression/regression.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1088">
+        <state relative-caret-position="1072">
           <caret line="68" column="4" selection-start-line="68" selection-start-column="4" selection-end-line="69" selection-end-column="26" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
@@ -600,7 +594,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/predict_salse/predict.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1120">
+        <state relative-caret-position="1008">
           <caret line="70" column="42" selection-start-line="70" selection-start-column="42" selection-end-line="70" selection-end-column="42" />
           <folding>
             <element signature="e#90#109#0" expanded="true" />
@@ -608,16 +602,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/111.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="8" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/111.html" />
     <entry file="file://$PROJECT_DIR$/liner_regression/ridge_regression.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
+        <state relative-caret-position="2320">
           <caret line="148" column="26" selection-start-line="148" selection-start-column="13" selection-end-line="148" selection-end-column="26" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
@@ -625,13 +613,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bayes/111.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="4" column="20" lean-forward="true" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/bayes/111.py" />
     <entry file="file://$PROJECT_DIR$/../machinelearninginaction/Ch04/bayes.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -639,22 +621,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bayes/bayes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
+        <state relative-caret-position="654">
           <caret line="142" column="64" selection-start-line="142" selection-start-column="64" selection-end-line="142" selection-end-column="64" />
           <folding>
             <element signature="e#1178#1206#0" />
-            <element signature="e#1431#2000#0" />
-            <element signature="e#2493#2521#0" />
-            <element signature="e#2852#3035#0" />
-            <element signature="e#2883#3612#0" />
           </folding>
         </state>
       </provider>
