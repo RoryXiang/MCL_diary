@@ -72,4 +72,5 @@ def local_words(feed1, feed0):
 
 
 if __name__ == '__main__':
+    ny = feedparser.parse("http://newyork.craigslist.org/stp/index/rss")
     a, b, c = local_words()

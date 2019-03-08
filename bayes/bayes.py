@@ -56,13 +56,14 @@ def set_of_words2vec(vocab_lsit, input_set):
 def train_nbo(train_matrix, train_category):
     """
     朴素贝叶斯分离器函数
-    :param train_matrix:
-    :param train_category:
+    :param train_matrix: 训练的文档矩阵
+    :param train_category: 训练的文档类别向量
     :return:
     """
+    print(train_matrix)
     num_traindocs = len(train_matrix)
     num_words = len(train_matrix[0])
-    pa_busive = np.sum(train_category) / float(num_traindocs)
+    pa_busive = np.sum(train_category) / float(num_traindocs)  # 侮辱性文章的比例
     # =====================================================
     # p0_num = p1_num = np.zeros(num_words)
     # p0_denom = p1_denom = 0
@@ -86,14 +87,14 @@ def train_nbo(train_matrix, train_category):
     return p0_vec, p1_vec, pa_busive
 
 
-# if __name__ == '__main__':
-#     list_posts, list_class = load_data()
-#     myvocb_list = create_vocablist(list_posts)
-#     train_mat = []
-#     for postindoc in list_posts:
-#         train_mat.append(set_of_words2vec(myvocb_list, postindoc))
-#     p0v, p1v, pab = train_nbo(train_mat, list_class)
-#     print(pab)
+if __name__ == '__main__':
+    list_posts, list_class = load_data()
+    myvocb_list = create_vocablist(list_posts)
+    train_mat = []
+    for postindoc in list_posts:
+        train_mat.append(set_of_words2vec(myvocb_list, postindoc))
+    p0v, p1v, pab = train_nbo(train_mat, list_class)
+    print(pab)
 
 
 def classfy_nb(vec2classify, p0vec, p1vec, pclass1):
@@ -144,7 +145,7 @@ def bag_words2vc_mn(vocablist, inputset):
     Arguments:
         vocablist {[type]} -- [description]
         inputset {[type]} -- [description]
-    
+
     Returns:
         [type] -- [description]
     """
@@ -208,5 +209,4 @@ def spam_test():
 
 # if __name__ == '__main__':
 #     spam_test()
-#     
-
+#
