@@ -46,6 +46,12 @@ def select(pop, fitness):
 def crossover(parent, pop):
     """
     # 交叉配对函数
+    交配的并不是前多少用父亲后多少用母亲，二十随机index用，实现方法就如下demo：
+        a = np.array([1, 2, 3, 4, 5])
+        b = [True, False, False, False, True]
+        c = np.array([99, 88])
+        a[b] = c
+        print(a)
     """
     if np.random.rand() < CROSS_RATE:
         # select another individual from pop
@@ -53,14 +59,14 @@ def crossover(parent, pop):
         cross_points = np.random.randint(0, 2, size=DNA_SIZE).astype(
             np.bool)   # choose crossover points
         # mating and produce one child
-        print(i_, cross_points)
-        print(pop[i_])
-        print(pop[i_, cross_points])
         parent[cross_points] = pop[i_, cross_points]
     return parent
 
 
 def mutate(child):
+    """
+    # 变异函数 随机一位上产生变异
+    """
     for point in range(DNA_SIZE):
         if np.random.rand() < MUTATION_RATE:
             child[point] = 1 if child[point] == 0 else 0
