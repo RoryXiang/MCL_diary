@@ -1,0 +1,10 @@
+import numpy as np
+a = np.array([[1, 6, 2], [4, 6, 8]])
+# print(a)
+b = np.array([8, 3, 4])
+# print(2**np.arange(10)[::-1])
+# print(float(2**10 - 1) * 8)
+# print(b.shape, type(b), type(a))
+# print(a.dot(b))
+# print(a.shape, b.shape)
+print(np.random.choice(5, 3, replace=True))
