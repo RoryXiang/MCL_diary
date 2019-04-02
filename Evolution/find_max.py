@@ -65,7 +65,7 @@ def crossover(parent, pop):
 
 def mutate(child):
     """
-    # 变异函数 随机一位上产生变异
+    # 变异函数 每一位上都有机会产生变异产生变异
     """
     for point in range(DNA_SIZE):
         if np.random.rand() < MUTATION_RATE:
