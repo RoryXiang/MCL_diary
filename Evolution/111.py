@@ -1,7 +1,7 @@
 import numpy as np
-a = np.array([[1, 6, 2], [4, 6, 8]])
+# a = np.array([[1, 6, 2], [4, 6, 8]])
 # print(a)
-b = np.array([8, 3, 4])
+# b = np.array([8, 3, 4])
 # print(2**np.arange(10)[::-1])
 # print(float(2**10 - 1) * 8)
 # print(b.shape, type(b), type(a))
@@ -13,7 +13,22 @@ b = np.array([8, 3, 4])
 # c = np.array([99, 88])
 # a[b] = c
 # print(a)
-a = [[1, 2, 3], [4, 5, 6]]
-for m in a:
-    m[1] = m[1] ** 2
-print(a)
+# a = [[1, 2, 3], [4, 5, 6]]
+# for m in a:
+#     m[1] = m[1] ** 2
+# print(a)
+
+a = np.array([1, 2, 3, 4, 5, 6])
+b = np.array([True, False, False, False, False, True])
+c = [1, 0, 0, 0, 0, 1]
+# print((a == b).sum(axis=0))
+# print(a[b])
+# print(a[c])
+print(np.random.randint(
+    0, 2, 10, np.bool))
+
+
+a = [1, 2, 3, 4, 5, 6]
+b = [2, 2, 2, 2, 2, 2]
+b[:] = a
+print(b)
