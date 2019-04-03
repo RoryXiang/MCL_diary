@@ -18,17 +18,39 @@ import numpy as np
 #     m[1] = m[1] ** 2
 # print(a)
 
-a = np.array([1, 2, 3, 4, 5, 6])
-b = np.array([True, False, False, False, False, True])
-c = [1, 0, 0, 0, 0, 1]
+# a = np.array([1, 2, 3, 4, 5, 6])
+# b = np.array([True, False, False, False, False, True])
+# c = [1, 0, 0, 0, 0, 1]
 # print((a == b).sum(axis=0))
 # print(a[b])
 # print(a[c])
-print(np.random.randint(
-    0, 2, 10, np.bool))
+# print(np.random.randint(
+#     0, 2, 10, np.bool))
 
 
-a = [1, 2, 3, 4, 5, 6]
-b = [2, 2, 2, 2, 2, 2]
-b[:] = a
-print(b)
+# a = [1, 2, 3, 4, 5, 6]
+# b = [2, 2, 2, 2, 2, 2]
+# b[:] = a
+# print(b)
+# d = [1, 2, 3, 4, 5]
+# a = np.array([d for _ in range(10)])
+# b = np.vstack([d for _ in range(10)])
+# print(a.shape, b.shape)
+# print((a == b).all())
+
+# a = [1, 2, 4, 6]
+# b = np.empty_like(a, dtype=np.float64)
+# print(b)
+# c = np.empty(b.shape, dtype=np.float64)
+# print(c)
+xs = [0, 3, 6]
+ys = [0, 4, 8]
+
+mm = np.sum(np.sqrt(np.square(np.diff(xs)) + np.square(np.diff(ys))))
+print(np.diff(xs))
+print(np.square(np.diff(xs)))
+print(np.square(np.diff(xs)) + np.square(np.diff(ys)))
+print()
+print()
+print()
+print()
