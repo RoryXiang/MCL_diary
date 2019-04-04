@@ -63,7 +63,7 @@ class GA(object):
         """选择函数
         """
         print(fitness.shape)
-        print("???????", fitness)
+        # print("???????", fitness)
         index = np.random.choice(np.arange(
             self.people_size), size=self.people_size, replace=True, p=fitness / fitness.sum())
         return self.people[index]
@@ -86,17 +86,10 @@ class GA(object):
             # 选择father部分的城市（排序方式为father已有的排序）
             father_city = father[cross_points]
             # 选择father没选上的城市（排序方式为mother以后的排序）
-            mother_city = people[mother_index, ~np.isin(father, father_city)]
+            mother_city = people[mother_index, ~np.isin(
+                people[mother_index].ravel(), father_city)]
+            
             child = np.concatenate((father_city, mother_city))
-            print("?????", father)
-            print("@@@@father_city", father_city)
-            print(np.isin(father, father_city))
-            print("@@@@mother_city", mother_index)
-            print(~np.isin(father, father_city))
-            print("@@@@mother", people[mother_index])
-            print("@@@@mother_city", mother_city)
-            print("@@@@child", child)
-            print("==================")
             # time.sleep(10)
             father[:] = np.concatenate((father_city, mother_city))
             return father
