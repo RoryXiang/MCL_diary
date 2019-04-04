@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 # a = np.array([[1, 6, 2], [4, 6, 8]])
 # print(a)
 # b = np.array([8, 3, 4])
@@ -28,7 +29,7 @@ import numpy as np
 #     0, 2, 10, np.bool))
 
 
-# a = [1, 2, 3, 4, 5, 6]
+# a = np.array([1, 2, 3, 4, 5, 6])
 # b = [2, 2, 2, 2, 2, 2]
 # b[:] = a
 # print(b)
@@ -43,14 +44,41 @@ import numpy as np
 # print(b)
 # c = np.empty(b.shape, dtype=np.float64)
 # print(c)
-xs = [0, 3, 6]
-ys = [0, 4, 8]
+xs = [0, 3, 6, 9]
+ys = [0, 4, 8, 12]
+xs = [0, 2, 4, 8]
 
-mm = np.sum(np.sqrt(np.square(np.diff(xs)) + np.square(np.diff(ys))))
-print(np.diff(xs))
-print(np.square(np.diff(xs)))
-print(np.square(np.diff(xs)) + np.square(np.diff(ys)))
-print()
-print()
-print()
-print()
+# mm = np.sum(np.sqrt(np.square(np.diff(xs)) + np.square(np.diff(ys))))
+# print(np.diff(xs, n=2))
+# print(np.square(np.diff(xs)))
+# print(np.square(np.diff(xs)) + np.square(np.diff(ys)))
+
+# print(np.exp(2 * 2 / a))
+# print(2 * 2 / a)
+#
+# x = np.linspace(-5, 5)
+
+
+# def f(x):
+#     return np.exp(x)
+
+
+# plt.plot(x, f(x))
+# plt.show()
+
+a = np.array([1, 2, 3, 4, 5, 6])
+print(a.ravel())
+c = np.array([6, 3, 1, 4, 2, 5])
+b = np.array([True, False, True, False, False, True])
+mm = a[b]
+nn = c[~np.isin(c, mm)]
+print(mm)
+print(np.isin(c, mm))
+print(~np.isin(c, mm))
+print(nn)
+print(np.concatenate((mm, nn)))
+# print(*[2, 3])
+
+
+# print(np.random.randn()
+#       )
