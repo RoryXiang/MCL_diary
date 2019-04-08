@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 
 CITY_NUM = 20
 CROSS_RATE = 0.3
-MUTATION_RATE = 0.01
+MUTATION_RATE = 0.08
 POP_SIZE = 500
-N_GENERATION = 1000
+N_GENERATION = 2000
 
 
 class GA(object):
@@ -34,9 +34,9 @@ class GA(object):
         """
         x_values = np.empty_like(DNA, dtype=np.float64)
         y_values = np.empty_like(DNA, dtype=np.float64)
-        for index, d_number in enumerate(DNA):
-            x_values[index] = city_position[d_number][:, 0]
-            y_values[index] = city_position[d_number][:, 1]
+        for index, one_DNA in enumerate(DNA):
+            x_values[index] = city_position[one_DNA][:, 0]
+            y_values[index] = city_position[one_DNA][:, 1]
         return x_values, y_values
 
     # ==============================================
@@ -55,21 +55,21 @@ class GA(object):
         for index, (x_values, y_values) in enumerate(zip(xs_values, ys_values)):
             total_distance[index] = np.sum(
                 np.sqrt(np.square(np.diff(x_values)) + np.square(np.diff(y_values))))
-        # fitness = np.exp(self.DNA_size * 2 / total_distance)
-        fitness = np.exp(1 / total_distance)
+        fitness = np.exp(self.DNA_size * 2 / total_distance)
+        # 这里为什么要乘以self.DNA_size * 2，因为基数太小，fitness之间差距太小，在做select的时候就会每个概率几乎相等了，收敛太慢，放大后概率差就更凸显
+        # fitness1 = np.exp(1 / total_distance)
+        # print("???????", fitness, fitness1)
         return fitness, total_distance
 
     def select(self, fitness):
         """选择函数
         """
-        print(fitness.shape)
         # print("???????", fitness)
         index = np.random.choice(np.arange(
             self.people_size), size=self.people_size, replace=True, p=fitness / fitness.sum())
         return self.people[index]
 
     def crossover(self, father, people):
-        import time
         """交叉配对函数。原理是，选择父亲的一部分城市排序，然后剩余的城市排序按照母亲的排序方式组合成孩子路线方案
         Arguments:
             father [city1,city2..] -- 所有的城市排序
@@ -80,19 +80,18 @@ class GA(object):
         """
         if np.random.rand() < self.cross_rate:
             # 从people中选择另一个parent
-            mother_index = np.random.randint(0, self.people_size, 1)
+            mother_index = np.random.randint(0, self.people_size, size=1)
             # 选择交叉的DNA下标
             cross_points = np.random.randint(0, 2, self.DNA_size, dtype=np.bool)
             # 选择father部分的城市（排序方式为father已有的排序）
             father_city = father[cross_points]
             # 选择father没选上的城市（排序方式为mother以后的排序）
-            mother_city = people[mother_index, ~np.isin(
-                people[mother_index].ravel(), father_city)]
-            
+            mother_city = people[mother_index, np.isin(
+                people[mother_index].ravel(), father_city, invert=True)]
             child = np.concatenate((father_city, mother_city))
             # time.sleep(10)
-            father[:] = np.concatenate((father_city, mother_city))
-            return father
+            # father[:] = np.concatenate((father_city, mother_city))
+            # return father
             return child
         return father
 
@@ -121,6 +120,7 @@ class GA(object):
         for father in people:
             child = self.crossover(father, people_copy)
             child = self.mutate(child)
+            # father[:] = child
             father = child
         self.people = people
 
@@ -130,7 +130,6 @@ class TSP(object):
 
     def __init__(self, city_num):
         self.city_position = np.random.rand(city_num, 2)
-        # print("?????", self.city_position)
         plt.ion()
 
     def ploting(self, x_values, y_values, total_distance):

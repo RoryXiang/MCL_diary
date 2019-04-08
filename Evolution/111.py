@@ -25,7 +25,7 @@ import matplotlib.pyplot as plt
 # print((a == b).sum(axis=0))
 # print(a[b])
 # print(a[c])
-# print(np.random.randint(
+# print("??", np.random.randint(
 #     0, 2, 10, np.bool))
 
 
@@ -66,19 +66,23 @@ xs = [0, 2, 4, 8]
 # plt.plot(x, f(x))
 # plt.show()
 
-a = np.array([1, 2, 3, 4, 5, 6])
-print(a.ravel())
-c = np.array([6, 3, 1, 4, 2, 5])
-b = np.array([True, False, True, False, False, True])
-mm = a[b]
-nn = c[~np.isin(c, mm)]
-print(mm)
-print(np.isin(c, mm))
-print(~np.isin(c, mm))
-print(nn)
-print(np.concatenate((mm, nn)))
+# a = np.array([1, 2, 3, 4, 5, 6])
+# # print(a.ravel())
+# c = np.array([6, 3, 1, 4, 2, 5])
+# b = np.array([True, False, True, False, False, True])
+# mm = a[b]
+# nn = c[~np.isin(c, mm)]
+# print(a[b])
+# print(a[~b])
+# print(mm)
+# print(np.isin(c, mm, invert=True))
+# print(~np.isin(c, mm))
+# print(nn)
+# print(np.concatenate((mm, nn)))
 # print(*[2, 3])
 
-
-# print(np.random.randn()
-#       )
+a = np.random.rand(5, 2)
+b = [0, 3, 2, 1, 4]
+c = a[b]
+print(a)
+print(c[:, 0])
