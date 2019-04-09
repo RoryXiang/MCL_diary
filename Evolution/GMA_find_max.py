@@ -1,13 +1,17 @@
+"""
+微生物遗传算法。其核心是只在比较中失败者做基因交叉，将胜利者的一部分基因遗传给失败者，也只在失败者中产生基因突变
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 
 
-DNA_SIZE = 10            # DNA length
-POP_SIZE = 100           # population size
-CROSS_RATE = 0.7         # mating probability (DNA crossover)
-MUTATION_RATE = 0.005    # mutation probability
+DNA_SIZE = 10           # DNA 长度
+POP_SIZE = 20           # 种群数量
+CROSS_RATE = 0.6        # 交叉配对概率
+MUTATION_RATE = 0.01    # 产生变异的概率
 N_GENERATIONS = 300
-X_BOUND = [0, 5]         # x upper and lower bounds
+X_BOUND = [0, 5]        # x元素的上下界
 
 
 def f(x):
@@ -56,6 +60,13 @@ class MGA(object):
         return loser_winner
 
     def mutate(self, loser_winner):
+        """变异函数，只在loser的基因上产生变异
+        Arguments:
+            loser_winner {[type]} -- [description]
+        
+        Returns:
+            [type] -- [description]
+        """
         mutation_point = np.empty((self.DNA_size,), dtype=np.bool)
         for i in range(self.DNA_size):
             mutation_point[i] = True if np.random.randn(
