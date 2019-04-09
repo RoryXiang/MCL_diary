@@ -81,8 +81,5 @@ xs = [0, 2, 4, 8]
 # print(np.concatenate((mm, nn)))
 # print(*[2, 3])
 
-a = np.random.rand(5, 2)
-b = [0, 3, 2, 1, 4]
-c = a[b]
-print(a)
-print(c[:, 0])
+a = np.array([1, 0, 0, 1])
+print(~a)
