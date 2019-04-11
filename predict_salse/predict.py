@@ -1,6 +1,8 @@
 # -*- coding:utf-8 -*-
 # Date   : （Sta Dec 22 18:46:05 2018 +0800）
 # Author : Rory Xiang
+import sys
+sys.path.append("..")
 
 import pandas as pd
 import numpy as np
@@ -61,7 +63,7 @@ if __name__ == '__main__':
 
     # rigre------------------------------------------------
     rigre_ws = rigre_regression(stand_x, stnd_y)
-    rigre_salse = np.sum(rigre_ws*xtest)
+    rigre_salse = np.sum(rigre_ws * xtest)
     rigre_ws_ = rigre_regression(xarr, yarr)
     rigre_salse_ = np.sum(rigre_ws_ * xtest)
     print("# rigre------------------------------------")
@@ -69,9 +71,6 @@ if __name__ == '__main__':
 
     # stage_wise---------------------------------------------
     stage_ws = stage_wise(stand_x, stnd_y)
-    stage_ssalse = np.sum(stage_ws*xtest)
+    stage_ssalse = np.sum(stage_ws * xtest)
     print("# stage_wise------------------------------------")
     print(stage_ssalse)
-
-
-
