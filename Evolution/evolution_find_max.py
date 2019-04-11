@@ -39,6 +39,7 @@ def make_chid(population, KID_NUMBER):
         # 将DNA产生变异: 在原来的孩子DNA基础上加上变异率乘以一个正太分布的系数
         kid_value += kid_mutation * np.random.randn(*kid_value.shape)
         # 上一步DNA产生变异后，DNA有可能跑出DNA限制的范围，需要通过下一步来限制
+        # numpy 必须要在原数组上操作kid_value[:]=，不能用kid_value=
         kid_value[:] = np.clip(kid_value, *DNA_BOUND)
         # kid_value = np.clip(kid_value, *DNA_BOUND)
         print(kid_value)
