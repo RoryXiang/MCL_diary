@@ -47,9 +47,26 @@ class Ant(object):
     def __choice_next_city(self):
         # 初始化转移概率矩阵（从当前城市到每一个城市的概率）
         cities_prob = np.zeros(shape=(city_num,))
-        # 用概率函数计算概率矩阵
+        total_prob = 0.0
+        # 用概率函数计算概率矩阵(联想选路概率函数)
         for next_city in range(city_num):
             if self.callable_city[next_city]:
                 try:
                     cities_prob[next_city] = np.power(
                         pheromone_graph[self.current_city][next_city], ALPHA) * np.power(1.0 / distance_graph[self.current_city][next_city], BATA)
+                    total_prob += cities_prob[next_city]
+                except ZeroDivisionError as e:
+                    print(
+                        f"Ant ID: {self.ID}, current city: {self.current_city}, target city: {next_city}")
+                    sys.exit(1)
+        next_city = np.random.choice(np.arange(city_num), size=1, p=cities_prob / float(total_prob))
+        # next_city = None
+        # if total_prob > 0:
+        #     temp_prob = random.uniform(0.0, total_prob)
+        #     for i in range(city_num):
+        #         if self.callable_city[i]:
+        #             temp_prob -= cities_prob[i]
+        #             if temp_prob < 0.0:
+        #                 next_city = i
+        #                 break
+

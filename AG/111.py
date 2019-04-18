@@ -7,6 +7,8 @@ import math
 import tkinter  # //GUI模块
 import threading
 from functools import reduce
+import numpy as np
+import time
 
 
 # 参数
@@ -79,6 +81,7 @@ class Ant(object):
                     sys.exit(1)
 
         # 轮盘选择城市
+        t1 = time.time()
         if total_prob > 0.0:
             # 产生一个随机概率,0.0-total_prob
             temp_prob = random.uniform(0.0, total_prob)
@@ -88,7 +91,15 @@ class Ant(object):
                     temp_prob -= select_citys_prob[i]
                     if temp_prob < 0.0:
                         next_city = i
+                        t2 = time.time()
+                        # print("???", t2 - t1)
                         break
+        # t3 = time.time()
+        # next_city = np.random.choice(np.arange(city_num), size=1,
+        #                              p=np.array(select_citys_prob) / float(total_prob))[0]
+        # t4 = time.time()
+        # print("?????", t4 - t3)
+        # print("?????", next_city)
 
         # 未从概率产生，顺序选择一个未访问城市
         # if next_city == -1:
