@@ -152,11 +152,13 @@ class Ant(object):
             next_city = self.__choice_next_city()
             self.__move(next_city)
 
-        # 计算路径总长度
-        self.__cal_total_distance()
+        # 计算路径总长度(需要加上从最后一个城市回到第一个城市的距离)
+        self.total_distance += distance_graph[self.path[-1]][self.path[0]]
+
+        # self.__cal_total_distance()  # 因为每一步move都做了distance add 所以没有必要浪费时间再重新计算前面的距离和，而是只要加上最后到第一个城市的距离就ok
+
 
 # ----------- TSP问题 -----------
-
 
 class TSP(object):
 
