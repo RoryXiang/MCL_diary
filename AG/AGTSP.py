@@ -1,5 +1,7 @@
 """蚂蚁算法解决TSP问题
     核心需要理解蚂蚁在行经中下一个point选择概率函数；以及影响概率函数的信息素的更新
+    --**-- (用numpy代码构造起来会快很多，也简单很多，但在运行起来会慢非常多,不知道为啥) --**--
+@@@@ 问题： 当城市过多后，计算速度明显下降，而且极有可能陷入局部最优解。（20个左右的城市的时候使没有问题的）
 """
 
 import numpy as np
@@ -12,18 +14,23 @@ from functools import reduce
 import copy
 
 ALPHA = 1.0  # 信息启发因子
-BATA = 1.0  # 期望值启发因子
+BATA = 2.0  # 期望值启发因子
 RHO = 0.5  # 信息素挥发因素
-Q = 1  # 信息素总量
-city_num = 50  # 城市总数
-ant_num = 50  # 蚁群数量
+Q = 100  # 信息素总量
+city_num = 20  # 城市总数
+ant_num = 20  # 蚁群数量
 
 # 初始化城市位置信息
-city_positions = np.random.randint(0, 700, size=(city_num, 2))
+city_positions = np.random.randint(50, 750, size=(city_num, 2))
+# city_positions = list(city_positions)  # 将numpy矩阵转换成list
+
 # 初始化距离图谱
 distance_graph = np.zeros((city_num, city_num))
+# distance_graph = list(distance_graph)  # 将numpy矩阵转换成list
+
 # 初始化信息素
 pheromone_graph = np.ones((city_num, city_num))
+# pheromone_graph = list(pheromone_graph)  # 将numpy矩阵转换成list
 
 
 # 蚂蚁类=========================================
@@ -39,22 +46,26 @@ class Ant(object):
     def __init_data(self):
         self.path = []  # 蚂蚁的路经
         self.callable_city = np.ones((city_num,), dtype=np.bool)  # 城市可访问状态
+        # self.callable_city = list(self.callable_city)  # 将numpy矩阵转换成list
         self.total_distance = 0.0  # 蚂蚁的路径总距离
         self.current_city = random.randint(0, city_num - 1)  # 选择初始化城市
         self.path.append(self.current_city)
-        self.callable_city[self.callable_city] = False
+        self.callable_city[self.current_city] = False
         self.move_count = 1
 
     def __choice_next_city(self):
         # 初始化转移概率矩阵（从当前城市到每一个城市的概率）
         cities_prob = np.zeros(shape=(city_num,))
+        # cities_prob = list(cities_prob)  # 将numpy矩阵转换成list
         total_prob = 0.0
         # 用概率函数计算概率矩阵(联想选路概率函数)
         for next_city in range(city_num):
             if self.callable_city[next_city]:
                 try:
-                    cities_prob[next_city] = np.power(
-                        pheromone_graph[self.current_city][next_city], ALPHA) * np.power(1.0 / distance_graph[self.current_city][next_city], BATA)
+                    # cities_prob[next_city] = np.power(
+                    #     pheromone_graph[self.current_city][next_city], ALPHA) * np.power(1.0 / distance_graph[self.current_city][next_city], BATA)
+                    cities_prob[next_city] = pow(
+                        pheromone_graph[self.current_city][next_city], ALPHA) * pow(1.0 / distance_graph[self.current_city][next_city], BATA)
                     total_prob += cities_prob[next_city]
                 except ZeroDivisionError as e:
                     print(
@@ -102,7 +113,7 @@ class Ant(object):
         self.current_city = next_city
         self.move_count += 1
 
-    def __search_path(self):
+    def search_path(self):
 
         # 初始化蚂蚁信息
         self.__init_data()
@@ -135,18 +146,19 @@ class TSP(object):
             root,
             width=self.width,
             height=self.height,
-            bg="wite",
+            bg="#EBEBEB",
             xscrollincrement=1,
             yscrollincrement=1
         )
         self.canvas.pack(expand=tkinter.YES, fill=tkinter.BOTH)
         self.title("TSP蚁群算法(n:初始化 e:开始搜索 s:停止搜索 q:退出程序)")
         self.__r = 5
-        self.__lock = threading.RLook()
+        self.__lock = threading.RLock()
 
         self.__bindEvents()
         self.new()
 
+        # 计算城市之间的距离
         for start in range(city_num):
             for end in range(city_num):
                 temp_distance = pow((city_positions[end][0] - city_positions[start][0]), 2) + pow(
@@ -207,47 +219,84 @@ class TSP(object):
             self.best_ant.total_distance = 1 << 31  # 二进制左移
             self.iter = 1
 
-        def line(self, order):
-            # 删除原线
-            self.canvas.delete("line")
+    def line(self, order):
+        """将所有点按照最优解连接起来"""
+        # 删除原线
+        self.canvas.delete("line")
 
-            def line2(i1, i2):
-                point1, point2 = self.nodes[i1], self.nodes[i2]
-                self.canvas.create_line(
-                    point1, point2, fill="#000000", tages="line")
-                return i2
-            reduce(line2, order, order[-1])
+        def line2(i1, i2):
+            point1, point2 = self.nodes[i1], self.nodes[i2]
+            self.canvas.create_line(
+                point1, point2, fill="#000000", tags="line")
+            return i2
+        reduce(line2, order, order[-1])
 
-        def clear(self):
-            """清除画布"""
-            for item in self.canvas.find_all():
-                self.canvas.delete(item)
+    def clear(self):
+        """清除画布"""
+        for item in self.canvas.find_all():
+            self.canvas.delete(item)
 
-        def quite(self, evt):
-            self.__lock.acquire()
-            self.__running = False
-            self.__lock.release()
-            self.root.destroy()
-            print(u"\n程序已退出...")
-            sys.exit()
+    def quite(self, evt):
+        """退出程序"""
+        self.__lock.acquire()
+        self.__running = False
+        self.__lock.release()
+        self.root.destroy()
+        print(u"\n程序已退出...")
+        sys.exit()
 
-        # 停止搜索
-        def stop(self, evt):
-            self.__lock.acquire()
-            self.__running = False
-            self.__lock.release()
+    # 停止搜索
+    def stop(self, evt):
+        self.__lock.acquire()
+        self.__running = False
+        self.__lock.release()
 
-        def search_path(self, evt=None):
+    def search_path(self, evt=None):
 
-            # 多线程
-            self.__lock.acquire()
-            self.__running = True
-            self.__lock.release()
-            while self.__running:
-                for ant in self.ants:
-                    ant.search_path()
-                    if ant.total_distance < self.best_ant.total_distance:
-                        self.best_ant = copy.deepcopy(ant)
+        # 多线程
+        self.__lock.acquire()
+        self.__running = True
+        self.__lock.release()
+        while self.__running:
+            # print("????", self.iter)
+            for ant in self.ants:
+                ant.search_path()
+                if ant.total_distance < self.best_ant.total_distance:
+                    self.best_ant = copy.deepcopy(ant)
 
-                # 更新信息素
-                self.__uodate_pheromone_graph()
+            # 更新信息素
+            self.__uodate_pheromone_graph()
+            print(f"迭代次数： {self.iter}, 最佳路径总距离： {self.best_ant.total_distance}")
+
+            # 连线
+            self.line(self.best_ant.path)
+            # 设置标题
+            self.title(
+                f"TSP蚁群算法(n:随机初始 e:开始搜索 s:停止搜索 q:退出程序) 迭代次数: {self.iter}")
+            self.canvas.update()
+            self.iter += 1
+
+    def __uodate_pheromone_graph(self):
+        """更新信息素"""
+        # 初始化蚂蚁本轮释放的信息矩阵（每只蚂蚁的信息素都需要加进来）: 相当于计算 △Tij
+        temp_pheromone = np.zeros((city_num, city_num))
+        # temp_pheromone = list(temp_pheromone)  # 将numpy矩阵转换成list
+        for ant in self.ants:  # 将所有蚂蚁在路径上留下的信息素叠加
+            for i in range(1, city_num):
+                start, end = ant.path[i - 1], ant.path[i]
+                # 这里用到蚂蚁释放信息素模型函数
+                temp_pheromone[start][end] += Q / ant.total_distance
+                temp_pheromone[end][start] = temp_pheromone[start][end]
+
+        # 更新信息素矩阵 (用到信息素浓度更新函数)
+        for i in range(city_num):
+            for j in range(city_num):
+                pheromone_graph[i][j] = pheromone_graph[i][j] * \
+                    RHO + temp_pheromone[i][j]
+
+    def mainloop(self):
+        self.root.mainloop()
+
+
+if __name__ == '__main__':
+    TSP(tkinter.Tk()).mainloop()
