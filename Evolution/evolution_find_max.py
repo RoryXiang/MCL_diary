@@ -1,3 +1,6 @@
+"""进化算法：
+
+"""
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -42,15 +45,13 @@ def make_chid(population, KID_NUMBER):
         # numpy 必须要在原数组上操作kid_value[:]=，不能用kid_value=
         kid_value[:] = np.clip(kid_value, *DNA_BOUND)
         # kid_value = np.clip(kid_value, *DNA_BOUND)
-        print(kid_value)
-    print(kids["DNA"])
+        # print(kid_value)
+    # print(kids["DNA"])
     return kids
 
 
 def kill_bad(population, kids):
     # 将新生成的孩子放到种群中
-    # print(population)
-    # print(kids)
     for key in ["DNA", "mut_strength"]:
         population[key] = np.vstack((population[key], kids[key]))
     # 计算所有个体的fitness
