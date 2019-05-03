@@ -96,7 +96,6 @@ def main():
                           s=200, lw=0, c='red', alpha=0.5)
         plt.pause(0.05)
         fitness = get_fitness(values)
-        print("Most fitted DNA: ", pop[np.argmax(fitness), :])
         pop = select(pop, fitness)
         pop_copy = pop.copy()
         for parent in pop:
