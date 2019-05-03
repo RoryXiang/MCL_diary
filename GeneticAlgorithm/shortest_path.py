@@ -131,6 +131,7 @@ class TSP(object):
     """docstring for TSP"""
 
     def __init__(self, city_num):
+        # 随机生成20个城市的坐标
         self.city_position = np.random.rand(city_num, 2)
         plt.ion()
 
@@ -147,13 +148,16 @@ class TSP(object):
 
 
 ga = GA(DNA_size=CITY_NUM, cross_rate=CROSS_RATE,
-        mutation_rate=MUTATION_RATE, people_size=POP_SIZE)
+        mutation_rate=MUTATION_RATE, people_size=POP_SIZE)  # 初始化种群
 
-env = TSP(city_num=CITY_NUM)
+env = TSP(city_num=CITY_NUM)  # 初始化20是个城市
 
 for generation in range(N_GENERATION):
+    # 计算出所有个体的坐标
     x_values, y_values = ga.translate_DNA(ga.people, env.city_position)
+    # 计算出所有个体的适应性+路程
     fitness, total_distance = ga.get_fitness(x_values, y_values)
+    # 找出适应性最高的个体
     ga.evolve(fitness)
     best_idx = np.argmax(fitness)
     print('Gen:', generation, '| best fit: %.2f' % fitness[best_idx],)
