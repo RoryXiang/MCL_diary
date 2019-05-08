@@ -27,7 +27,9 @@ ant_num = 20  # 蚁群数量
 # 初始化城市位置信息
 city_positions = np.random.randint(50, 750, size=(city_num, 2))
 # city_positions = list(city_positions)  # 将numpy矩阵转换成list
-# ==================================================================
+
+
+# =================用来测试不同的信息素释放模型效果=======================
 # distance_x = [
 #     178, 272, 176, 171, 650, 499, 267, 703, 408, 437, 491, 74, 532,
 #     416, 626, 42, 271, 359, 163, 508, 229, 576, 147, 560, 35, 714,
@@ -297,7 +299,7 @@ class TSP(object):
 
     def __uodate_pheromone_graph(self):
         """更新信息素"""
-        # 初始化蚂蚁本轮释放的信息矩阵（每只蚂蚁的信息素都需要加进来）: 相当于计算 △Tij
+        # 初始化蚂蚁本轮释放的信息矩阵（每只蚂蚁的信息素都需要加进来）: 相当于计算 ∇τ(ij)
         temp_pheromone = np.zeros((city_num, city_num))
         # temp_pheromone = list(temp_pheromone)  # 将numpy矩阵转换成list
         for ant in self.ants:  # 将所有蚂蚁在路径上留下的信息素叠加
