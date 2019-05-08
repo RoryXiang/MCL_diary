@@ -1,3 +1,5 @@
+# coding=utf-8
+
 """蚂蚁算法解决TSP问题
     核心需要理解蚂蚁在行经中下一个point选择概率函数；以及影响概率函数的信息素的更新
     --**-- (用numpy代码构造起来会快很多，也简单很多，但在运行起来会慢非常多,不知道为啥) --**--
@@ -16,6 +18,7 @@ import copy
 
 ALPHA = 1.0  # 信息启发因子
 BATA = 2.0  # 期望值启发因子
+# BATA = 3.0  # 期望值启发因子
 RHO = 0.5  # 信息素挥发因素
 Q = 100  # 信息素总量
 city_num = 20  # 城市总数
@@ -24,6 +27,20 @@ ant_num = 20  # 蚁群数量
 # 初始化城市位置信息
 city_positions = np.random.randint(50, 750, size=(city_num, 2))
 # city_positions = list(city_positions)  # 将numpy矩阵转换成list
+# ==================================================================
+# distance_x = [
+#     178, 272, 176, 171, 650, 499, 267, 703, 408, 437, 491, 74, 532,
+#     416, 626, 42, 271, 359, 163, 508, 229, 576, 147, 560, 35, 714,
+#     757, 517, 64, 314, 675, 690, 391, 628, 87, 240, 705, 699, 258,
+#     428, 614, 36, 360, 482, 666, 597, 209, 201, 492, 294]
+# distance_y = [
+#     170, 395, 198, 151, 242, 556, 57, 401, 305, 421, 267, 105, 525,
+#     381, 244, 330, 395, 169, 141, 380, 153, 442, 528, 329, 232, 48,
+#     498, 265, 343, 120, 165, 50, 433, 63, 491, 275, 348, 222, 288,
+#     490, 213, 524, 244, 114, 104, 552, 70, 425, 227, 331]
+# city_positions = np.array([[distance_x[index], distance_y[index]]
+#                            for index, _ in enumerate(distance_x)])
+# ==================================================================
 
 # 初始化距离图谱
 distance_graph = np.zeros((city_num, city_num))
@@ -268,7 +285,8 @@ class TSP(object):
             # 更新信息素
             self.__uodate_pheromone_graph()
             print(f"迭代次数： {self.iter}, 最佳路径总距离： {self.best_ant.total_distance}")
-
+            # if self.best_ant.total_distance <= 2191:
+            #     self.stop(evt=None)
             # 连线
             self.line(self.best_ant.path)
             # 设置标题
@@ -287,6 +305,9 @@ class TSP(object):
                 start, end = ant.path[i - 1], ant.path[i]
                 # 这里用到蚂蚁释放信息素模型函数
                 temp_pheromone[start][end] += Q / ant.total_distance
+                # temp_pheromone[start][end] += Q / distance_graph[start][end]
+                # temp_pheromone[start][end] += Q / \
+                #     ant.total_distance * distance_graph[start][end]
                 temp_pheromone[end][start] = temp_pheromone[start][end]
 
         # 更新信息素矩阵 (用到信息素浓度更新函数)
