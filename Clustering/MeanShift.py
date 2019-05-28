@@ -6,6 +6,7 @@ meanshift聚类算法
 from collections import defaultdict
 import numpy as np
 import math
+import matplotlib.pyplot as plt
 
 
 class MeanShift:
@@ -88,6 +89,7 @@ class MeanShift:
         for i in range(self.N):
             delta = center_arr - data[i]
             dis2 = np.sum(delta * delta, axis=1)
+            print(np.argmin(dis2), "?????")
             self.labels[i] = np.argmin(dis2)
         return
 
@@ -95,6 +97,10 @@ class MeanShift:
         # 训练主函数
         self.init_param(data)
         seed_list = self.get_seeds(data)
+        for cluster_center in seed_list:
+            plt.plot(cluster_center[0], cluster_center[1], 'o',
+                     markerfacecolor="m", markeredgecolor='k', markersize=14)
+        plt.pause(0.05)
         for seed in seed_list:
             current_center = seed
             tmp_center_score = 0
@@ -132,8 +138,8 @@ if __name__ == '__main__':
     MS = MeanShift(bin_seeding=True)
     MS.fit(data)
     labels = MS.labels
+    centers = MS.centers
     # print(labels)
-    import matplotlib.pyplot as plt
     from itertools import cycle
 
     def visualize(data, labels):
@@ -143,6 +149,9 @@ if __name__ == '__main__':
         for col, label in zip(cycle(color), unique_label):
             partial_data = data[np.where(labels == label)]
             plt.scatter(partial_data[:, 0], partial_data[:, 1], color=col)
+        for cluster_center in centers:
+            plt.plot(cluster_center[0], cluster_center[1], 'o',
+                     markerfacecolor=col, markeredgecolor='k', markersize=14)
         plt.show()
         return
 

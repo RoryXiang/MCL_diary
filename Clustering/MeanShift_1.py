@@ -44,7 +44,7 @@ class MeanShift(object):
         below_points = []
         for point in points:
             dis = self.euclidean_dis2(current_center, point)
-            if dis <= self.bind_width * 2:
+            if dis <= self.bind_width ** 2:
                 wight = self.gaussian_weight(dis)
                 all_wight += wight
                 wights.append(wight)
@@ -55,3 +55,5 @@ class MeanShift(object):
     def classify(self, points):
         center_arr = np.array(self.centers)
         for i in range(self.N):
+            dealt = center_arr - points[i]
+            dis_arr = np.sum(dealt * dealt, axis=1)  # 计算第i个点到每个center的距离
