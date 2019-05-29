@@ -31,6 +31,7 @@ class MeanShift:
 
     def get_seeds(self, data):
         # 获取可以作为起始质心的点（seed）
+        # return data
         if self.bin_seeding:
             binsize = self.band_width
         else:
@@ -39,11 +40,11 @@ class MeanShift:
         seeds_fre = defaultdict(int)
         for sample in data:
             seed = tuple(np.round(sample / binsize))  # 将数据粗粒化，以防止非常近的样本点都作为起始质心
-            # print(seed)
+            # print("9999999999999", seed, sample)
             seeds_fre[seed] += 1
         for seed, fre in seeds_fre.items():
             if fre >= self.min_fre:
-                seed_list.append(np.array(seed))
+                seed_list.append(np.array(seed) * binsize)
         if not seed_list:
             raise ValueError('the bin size and min_fre are not proper')
         # print(len(seed_list), seed_list)
@@ -97,10 +98,10 @@ class MeanShift:
         # 训练主函数
         self.init_param(data)
         seed_list = self.get_seeds(data)
-        for cluster_center in seed_list:
-            plt.plot(cluster_center[0], cluster_center[1], 'o',
-                     markerfacecolor="m", markeredgecolor='k', markersize=14)
-        plt.pause(0.05)
+        # for cluster_center in seed_list:
+        #     plt.plot(cluster_center[0], cluster_center[1], 'o',
+        #              markerfacecolor="m", markeredgecolor='k', markersize=14)
+        # plt.pause(0.05)
         for seed in seed_list:
             current_center = seed
             tmp_center_score = 0
@@ -132,7 +133,7 @@ class MeanShift:
 if __name__ == '__main__':
     from sklearn.datasets import make_blobs
 
-    data, label = make_blobs(n_samples=500, centers=5,
+    data, label = make_blobs(n_samples=500, centers=3,
                              cluster_std=1.5, random_state=10)
 
     MS = MeanShift(bin_seeding=True)
@@ -143,7 +144,7 @@ if __name__ == '__main__':
     from itertools import cycle
 
     def visualize(data, labels):
-        color = 'bgrym'
+        color = 'bgrymkc'
         unique_label = np.unique(labels)
         print(unique_label)
         for col, label in zip(cycle(color), unique_label):
