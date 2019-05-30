@@ -1,66 +1,62 @@
-# -*- coding:utf-8 -*-
-
+import tushare as ts
+import pandas as pd
 import numpy as np
+from sklearn.cluster import MeanShift, estimate_bandwidth
 
-from sklearn.cluster import DBSCAN
-from sklearn import metrics
-from sklearn.datasets.samples_generator import make_blobs
-from sklearn.preprocessing import StandardScaler
+data = ts.get_hist_data('601518', start='2017-010-26',
+                        end='2018-06-22', ktype='D')
 
+datay = pd.DataFrame(
+    columns=['滞后两天', '滞后一天', '当天涨跌情况'], index=range(len(data) - 2))
+for i in range(2, len(data)):
 
-# #############################################################################
-# Generate sample data
-centers = [[1, 1], [-1, -1], [1, -1]]
-X, labels_true = make_blobs(n_samples=750, centers=centers, cluster_std=0.4,
-                            random_state=0)
+    datay.iloc[i - 2, 0] = data.iloc[i - 2, 6]
 
-X = StandardScaler().fit_transform(X)
+    datay.iloc[i - 2, 1] = data.iloc[i - 1, 6]
+    if data.iloc[i, 6] > 0:
 
-# #############################################################################
-# Compute DBSCAN
-db = DBSCAN(eps=0.3, min_samples=10).fit(X)
-print(db.labels_)
-core_samples_mask = np.zeros_like(db.labels_, dtype=bool)
-print(core_samples_mask)
-core_samples_mask[db.core_sample_indices_] = True
-labels = db.labels_
+        datay.iloc[i - 2, 2] = 1
 
-# Number of clusters in labels, ignoring noise if present.
-n_clusters_ = len(set(labels)) - (1 if -1 in labels else 0)
+    else:
 
-print('Estimated number of clusters: %d' % n_clusters_)
-print("Homogeneity: %0.3f" % metrics.homogeneity_score(labels_true, labels))
-print("Completeness: %0.3f" % metrics.completeness_score(labels_true, labels))
-print("V-measure: %0.3f" % metrics.v_measure_score(labels_true, labels))
-print("Adjusted Rand Index: %0.3f"
-      % metrics.adjusted_rand_score(labels_true, labels))
-print("Adjusted Mutual Information: %0.3f"
-      % metrics.adjusted_mutual_info_score(labels_true, labels))
-print("Silhouette Coefficient: %0.3f"
-      % metrics.silhouette_score(X, labels))
+        datay.iloc[i - 2, 2] = 0
+print(datay)
+x = np.array(np.array(datay.iloc[:, [0, 1]]).tolist())
+bandwidth = estimate_bandwidth(x, quantile=0.1, n_samples=len(x))  # 设置均值漂移参数
 
-# #############################################################################
-# Plot result
+m_estimator = MeanShift(bandwidth=bandwidth, bin_seeding=True)  # 计算聚类
+
+m_estimator.fit(x)  # 训练均值漂移模型
+
+labels = m_estimator.labels_  # 获取标记
+cent = m_estimator.cluster_centers_  # 提取聚类的中心点位置
+num_clumster = len(np.unique(labels))  # 计算聚群个数
+
+print('聚群的个数为:', str(num_clumster))  # 显示
 import matplotlib.pyplot as plt
 
-# Black removed and is used for noise instead.
-unique_labels = set(labels)
-colors = [plt.cm.Spectral(each)
-          for each in np.linspace(0, 1, len(unique_labels))]
-for k, col in zip(unique_labels, colors):
-    if k == -1:
-        # Black used for noise.
-        col = [0, 0, 0, 1]
+from itertools import cycle
 
-    class_member_mask = (labels == k)
+plt.figure()
 
-    xy = X[class_member_mask & core_samples_mask]
-    plt.plot(xy[:, 0], xy[:, 1], 'o', markerfacecolor=tuple(col),
-             markeredgecolor='k', markersize=14)
+markers = '.*xo+sp'  # 针对不同的群标记不一样的标记
+colors = 'rgbkcmy'  # 针对不同的群标记不一样的颜色
+# https://www.jianshu.com/p/b992c1279c73
 
-    xy = X[class_member_mask & ~core_samples_mask]
-    plt.plot(xy[:, 0], xy[:, 1], 'o', markerfacecolor=tuple(col),
-             markeredgecolor='k', markersize=6)
+for i, marker, color in zip(range(num_clumster), markers, colors):  # zip函数用于对应组合
 
-plt.title('Estimated number of clusters: %d' % n_clusters_)
+    # 组合为（0,.）(1,*)(2,x)(3,v)
+    print(i, marker, color)
+
+    plt.scatter(x[labels == i, 0], x[labels == i, 1],
+                marker=marker, color=color, s=30)  # 画出前7群点
+
+    centr = cent[i]
+
+    plt.plot(centr[0], centr[1], marker='o', markerfacecolor=color,
+             markeredgecolor='k', markersize=8)
+
+    plt.title('Clusters and their centroids')
+    plt.pause(0.5)
+
 plt.show()
