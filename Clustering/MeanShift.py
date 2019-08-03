@@ -11,11 +11,12 @@ import math
 import matplotlib.pyplot as plt
 from itertools import cycle
 from sklearn.datasets import make_blobs
+from sklearn import datasets
 import time
 
 
 class MeanShift:
-    def __init__(self, epsilon=0.001, band_width=2, min_fre=5):
+    def __init__(self, epsilon=0.001, band_width=0.4, min_fre=3):
         self.epsilon = epsilon
         self.band_width = band_width
         self.min_fre = min_fre  # 可以作为起始质心的球体内最少的样本数目
@@ -127,6 +128,7 @@ def visualize(data, labels, centers):
     for cluster_center in centers:
         plt.plot(cluster_center[0], cluster_center[1], 'o',
                  markerfacecolor=col, markeredgecolor='k', markersize=14)
+    plt.title("MeanShift clustering")
     plt.show()
     return
 
@@ -138,11 +140,15 @@ if __name__ == '__main__':
     #                      cluster_std=1.5, random_state=10)
 
     # ==================== 特定形状的数据 =========================
-    X, y = make_blobs(random_state=170, n_samples=500, centers = 5)
-    rng = np.random.RandomState(74)
-    # transform the data to be stretched
-    transformation = rng.normal(size=(2, 2))
-    data = np.dot(X, transformation)
+    # X, y = make_blobs(random_state=170, n_samples=500, centers = 5)
+    # rng = np.random.RandomState(74)
+    # # transform the data to be stretched
+    # transformation = rng.normal(size=(2, 2))
+    # data = np.dot(X, transformation)
+
+    X1, y1 = datasets.make_circles(n_samples=1000, factor=.6, noise=.02)
+    X2, y2 = datasets.make_blobs(n_samples=40, n_features=2, centers=[[1.2, 1.2]], cluster_std=[[.1]], random_state=9)
+    data = np.concatenate((X1, X2))
     # ============================================================
 
     t1 = time.time()
