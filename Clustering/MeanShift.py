@@ -133,13 +133,17 @@ def visualize(data, labels, centers):
 
 if __name__ == '__main__':
     # 生成数据点
+    # ==================== 随机现状的数据 =========================
     # data, _ = make_blobs(n_samples=500, centers=7,
     #                      cluster_std=1.5, random_state=10)
-    X, y = make_blobs(random_state=170, n_samples=600, centers = 5)
+
+    # ==================== 特定形状的数据 =========================
+    X, y = make_blobs(random_state=170, n_samples=500, centers = 5)
     rng = np.random.RandomState(74)
     # transform the data to be stretched
     transformation = rng.normal(size=(2, 2))
     data = np.dot(X, transformation)
+    # ============================================================
 
     t1 = time.time()
     MS = MeanShift()
