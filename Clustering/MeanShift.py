@@ -11,6 +11,7 @@ import math
 import matplotlib.pyplot as plt
 from itertools import cycle
 from sklearn.datasets import make_blobs
+from sklearn import datasets
 import time
 
 
@@ -127,14 +128,30 @@ def visualize(data, labels, centers):
     for cluster_center in centers:
         plt.plot(cluster_center[0], cluster_center[1], 'o',
                  markerfacecolor=col, markeredgecolor='k', markersize=14)
+    plt.title("MeanShift clustering")
     plt.show()
     return
 
 
 if __name__ == '__main__':
     # 生成数据点
-    data, _ = make_blobs(n_samples=500, centers=7,
-                         cluster_std=1.5, random_state=10)
+    # ==================== 随机现状的数据 =========================
+    # data, _ = make_blobs(n_samples=500, centers=7,
+    #                      cluster_std=1.5, random_state=10)
+
+    # ==================== 特定形状的数据 =========================
+    # X, y = make_blobs(random_state=170, n_samples=500, centers = 5)
+    # rng = np.random.RandomState(74)
+    # # transform the data to be stretched
+    # transformation = rng.normal(size=(2, 2))
+    # data = np.dot(X, transformation)
+
+    # ============ 环形数据 === 需要更改 bind_width 和 min_fre =======
+    X1, y1 = datasets.make_circles(n_samples=1000, factor=.6, noise=.02)
+    X2, y2 = datasets.make_blobs(n_samples=40, n_features=2, centers=[[1.2, 1.2]], cluster_std=[[.1]], random_state=9)
+    data = np.concatenate((X1, X2))
+    # ============================================================
+
     t1 = time.time()
     MS = MeanShift()
     # 聚类
