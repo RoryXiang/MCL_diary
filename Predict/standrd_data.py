@@ -8,7 +8,7 @@ from sklearn.preprocessing import StandardScaler, MinMaxScaler
 from liner_regression.regression import stand_regres, lwlr
 
 
-data_ = pd.read_excel("../predict_salse/salse_data.xlsx")
+data_ = pd.read_excel("../Predict/salse_data.xlsx")
 data = data_[["vacationd_time", "salse_time", "old", "salse"]]
 
 

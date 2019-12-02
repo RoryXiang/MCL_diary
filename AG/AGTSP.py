@@ -1,3 +1,10 @@
+'''
+@Description: In User Settings Edit
+@Author: your name
+@Date: 2019-08-03 14:38:59
+@LastEditTime: 2019-10-15 15:03:30
+@LastEditors: Please set LastEditors
+'''
 # coding=utf-8
 
 """蚂蚁算法解决TSP问题

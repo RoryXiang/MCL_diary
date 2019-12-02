@@ -8,9 +8,9 @@ import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 from liner_regression.regression import stand_regres, lwlr
-from predict_salse.standrd_data import (get_stanred_x_y_arr, get_origin_x_y_arr,
-                                        get_everyday_origin_x_y_arr,
-                                        get_everyday_stanred_x_y_arr)
+from Predict.standrd_data import (get_stanred_x_y_arr, get_origin_x_y_arr,
+                                  get_everyday_origin_x_y_arr,
+                                  get_everyday_stanred_x_y_arr)
 from liner_regression.ridge_regression import rigre_regression, stage_wise
 
 
@@ -74,3 +74,4 @@ if __name__ == '__main__':
     stage_ssalse = np.sum(stage_ws * xtest)
     print("# stage_wise------------------------------------")
     print(stage_ssalse)
+
