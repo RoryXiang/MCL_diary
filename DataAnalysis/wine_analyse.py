@@ -33,7 +33,6 @@ print(colnm)
 
 def subplot_draw1():
     fig = plt.figure(figsize=(10, 6))
-
     for i in range(10):
         plt.subplot(2, 6, i + 1)  # subplots 表示分布绘制系列图
         sns.boxenplot(df[colnm[i]], orient="v", width=0.5, color=color[0])
@@ -53,9 +52,7 @@ def subplot_draw2():
         plt.ylabel("Frequency")
     plt.tight_layout()
     plt.show()
-    
+
 
 if __name__ == "__main__":
     subplot_draw2()
-
-
