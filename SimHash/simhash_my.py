@@ -78,6 +78,7 @@ class Simhash(object):
             for i in range(self.f):
                 v[i] += 1 if h & masks[i] else -1
         print(v, len(v))
+        # 这一步可以把hash码转换成64位one-hot编码
         ans = 0
         for i in range(self.f):
             if v[i] >= 0:
