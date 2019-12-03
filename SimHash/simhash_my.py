@@ -91,13 +91,17 @@ class Simhash(object):
         """
         assert self.f == another.f
         x = (self.value ^ another.value) & ((1 << self.f) - 1)
+        print("???, ", x)
         ans = 0
         while x:
             ans += 1
             x &= x - 1
         return ans
 
+
 sm = Simhash("i love u")
+
+print(Simhash("i realy true true love love love love you").distance(Simhash("i realy true true love love love love v")))
 
 # v = sm.build_by_features(["i", "love", "you"])
 # print(v)
